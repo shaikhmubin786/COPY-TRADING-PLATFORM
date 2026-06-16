@@ -1,0 +1,19 @@
+<header class="top-nav">
+  <div class="brand">
+    <div class="logo">CT</div>
+    <div>
+      <h2>CopyTrade</h2>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <a routerLink="/dashboard" routerLinkActive="active">Trading</a>
+    <a routerLink="/settings" routerLinkActive="active">Settings</a>
+  </nav>
+
+  <div class="user-area">
+    <span class="status-dot"></span>
+    <span>Admin</span>
+    <button (click)="logout()">Logout</button>
+  </div>
+</header>

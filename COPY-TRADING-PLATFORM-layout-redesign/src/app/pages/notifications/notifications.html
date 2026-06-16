@@ -1,0 +1,131 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Alert Center</span>
+        <h1>Notifications</h1>
+        <p>Trade alerts, retry alerts, broker warnings and Telegram notification settings.</p>
+      </div>
+
+      <div class="actions">
+        <button class="dark-btn">Mark All Read</button>
+        <button class="primary-btn">Refresh Alerts</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card" *ngFor="let card of summaryCards">
+        <div [class]="card.iconClass">{{ card.icon }}</div>
+        <span [class]="card.badgeClass">{{ card.title }}</span>
+        <h2>{{ card.value }}</h2>
+        <p>{{ card.description }}</p>
+      </div>
+    </section>
+
+    <section class="settings-grid">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Notification Settings</h3>
+            <p>Configure Telegram logs and trade notification preferences.</p>
+          </div>
+          <span class="badge green">Telegram</span>
+        </div>
+
+        <div class="field">
+          <label>Telegram Chat ID</label>
+          <input type="text" placeholder="Enter Telegram chat id" />
+        </div>
+
+        <div class="field">
+          <label>Alert Channel</label>
+          <select>
+            <option>Telegram + Dashboard</option>
+            <option>Dashboard Only</option>
+            <option>Telegram Only</option>
+          </select>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Trade Notifications</h4>
+            <p>Send alerts when orders are copied successfully.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Error Alerts</h4>
+            <p>Notify when broker token, timeout or order failure occurs.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Retry Alerts</h4>
+            <p>Send notification for automatic retry attempts.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Alert Rules</h3>
+            <p>Choose when important alerts should be triggered.</p>
+          </div>
+          <span class="badge yellow">Rules</span>
+        </div>
+
+        <div class="rule-card" *ngFor="let rule of alertRules">
+          <span>{{ rule.priority }}</span>
+          <h4>{{ rule.title }}</h4>
+          <p>{{ rule.description }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Recent Notifications</h3>
+          <p>Latest copy trading and broker activity alerts.</p>
+        </div>
+
+        <div class="filters">
+          <input type="text" placeholder="Search notification..." />
+          <select>
+            <option>All Alerts</option>
+            <option>Trade</option>
+            <option>Retry</option>
+            <option>Warning</option>
+            <option>System</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="notification-list">
+        <div class="notification-card" *ngFor="let item of notifications">
+          <div [class]="item.iconClass">{{ item.icon }}</div>
+
+          <div class="notification-content">
+            <div class="notification-top">
+              <div>
+                <span class="time">{{ item.time }}</span>
+                <h4>{{ item.title }}</h4>
+              </div>
+              <span [class]="item.typeClass">{{ item.type }}</span>
+            </div>
+
+            <p>{{ item.message }}</p>
+
+            <div class="meta">
+              <span>{{ item.broker }}</span>
+              <span>{{ item.account }}</span>
+              <span>{{ item.category }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

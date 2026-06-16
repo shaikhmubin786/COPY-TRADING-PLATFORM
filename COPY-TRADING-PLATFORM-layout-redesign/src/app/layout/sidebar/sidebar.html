@@ -1,0 +1,84 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+
+  <div class="logo-section">
+
+    <div class="logo">
+      CT
+    </div>
+
+    @if(!isCollapsed){
+      <div class="brand">
+        <h2>CopyTrade</h2>
+        <p>Admin Panel</p>
+      </div>
+    }
+
+  </div>
+
+  <button
+    class="toggle-btn"
+    (click)="toggleSidebar()">
+
+    ☰
+  </button>
+
+  <nav>
+
+    <a routerLink="/dashboard" routerLinkActive="active">
+      <span>📊</span>
+      @if(!isCollapsed){ <span>Dashboard</span> }
+    </a>
+
+    <a routerLink="/accounts" routerLinkActive="active">
+      <span>👥</span>
+      @if(!isCollapsed){ <span>Accounts</span> }
+    </a>
+
+    <a routerLink="/master-child" routerLinkActive="active">
+      <span>🔗</span>
+      @if(!isCollapsed){ <span>Master Child Mapping</span> }
+    </a>
+
+    <a routerLink="/orders" routerLinkActive="active">
+      <span>📋</span>
+      @if(!isCollapsed){ <span>Orders</span> }
+    </a>
+
+    <a routerLink="/positions" routerLinkActive="active">
+      <span>📈</span>
+      @if(!isCollapsed){ <span>Positions</span> }
+    </a>
+
+    <a routerLink="/holdings" routerLinkActive="active">
+      <span>💰</span>
+      @if(!isCollapsed){ <span>Holdings</span> }
+    </a>
+
+    <a routerLink="/logs" routerLinkActive="active">
+      <span>📝</span>
+      @if(!isCollapsed){ <span>Logs</span> }
+    </a>
+
+    <a routerLink="/settings" routerLinkActive="active">
+      <span>⚙️</span>
+      @if(!isCollapsed){ <span>Settings</span> }
+    </a>
+
+    <a routerLink="/risk-management" routerLinkActive="active">
+      <span>🛡️</span>
+      @if(!isCollapsed){ <span>Risk Management</span> }
+    </a>
+
+    <a routerLink="/notifications" routerLinkActive="active">
+      <span>🔔</span>
+      @if(!isCollapsed){ <span>Notifications</span> }
+    </a>
+
+    <a routerLink="/broker-settings" routerLinkActive="active">
+      <span>🏦</span>
+      @if(!isCollapsed){ <span>Broker Settings</span> }
+    </a>
+
+  </nav>
+
+</div>

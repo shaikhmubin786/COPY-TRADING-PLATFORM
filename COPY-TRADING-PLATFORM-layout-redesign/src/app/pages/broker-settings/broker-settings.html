@@ -1,0 +1,92 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Broker Configuration</span>
+        <h1>Broker Settings</h1>
+        <p>Manage broker API credentials, refresh tokens, reconnect API and session status.</p>
+      </div>
+
+      <div class="actions">
+        <button class="dark-btn">Refresh Tokens</button>
+        <button class="primary-btn">Save Settings</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card success">
+        <span>Connected</span>
+        <h2>02</h2>
+        <p>Active broker sessions</p>
+      </div>
+
+      <div class="summary-card warning">
+        <span>Token Warning</span>
+        <h2>01</h2>
+        <p>Refresh required</p>
+      </div>
+
+      <div class="summary-card danger">
+        <span>Disconnected</span>
+        <h2>01</h2>
+        <p>Reconnect API needed</p>
+      </div>
+
+      <div class="summary-card">
+        <span>Total Brokers</span>
+        <h2>03</h2>
+        <p>Zerodha, AliceBlue, Zenam</p>
+      </div>
+    </section>
+
+    <section class="broker-grid">
+      <div class="broker-card" *ngFor="let broker of brokers">
+        <div class="broker-head">
+          <div class="broker-title">
+            <div class="broker-logo">{{ broker.short }}</div>
+            <div>
+              <h3>{{ broker.name }}</h3>
+              <p>{{ broker.api }}</p>
+            </div>
+          </div>
+
+          <span [class]="broker.statusClass">{{ broker.status }}</span>
+        </div>
+
+        <div class="session-box">
+          <div>
+            <span>Session Status</span>
+            <b>{{ broker.session }}</b>
+          </div>
+
+          <div>
+            <span>Last Refresh</span>
+            <b>{{ broker.refresh }}</b>
+          </div>
+
+          <div>
+            <span>WebSocket</span>
+            <b>{{ broker.websocket }}</b>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>API Key</label>
+          <input type="password" placeholder="Enter API key" />
+        </div>
+
+        <div class="field">
+          <label>API Secret</label>
+          <input type="password" placeholder="Enter API secret" />
+        </div>
+
+        <div class="field">
+          <label>Access Token</label>
+          <input type="password" placeholder="Enter access token" />
+        </div>
+
+        <div class="button-group">
+          <button class="connect-btn">Reconnect API</button>
+          <button class="refresh-btn">Refresh Token</button>
+          <button class="disconnect-btn">Disconnect</button>
+        </div>
+      </div>
+    </section>

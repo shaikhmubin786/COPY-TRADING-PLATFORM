@@ -1,0 +1,108 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Live Position Tracking</span>
+        <h1>Positions</h1>
+        <p>Monitor running positions, MTM, net PNL and broker-wise exposure.</p>
+      </div>
+
+      <div class="actions">
+        <button class="dark-btn">Closed Positions</button>
+        <button class="primary-btn">Open Positions</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card">
+        <span>Open Positions</span>
+        <h2>09</h2>
+        <p>Across all child accounts</p>
+      </div>
+
+      <div class="summary-card success">
+        <span>Net PNL</span>
+        <h2>₹18,750</h2>
+        <p>Live profit</p>
+      </div>
+
+      <div class="summary-card warning">
+        <span>MTM</span>
+        <h2>₹6,420</h2>
+        <p>Market-to-market</p>
+      </div>
+
+      <div class="summary-card danger">
+        <span>Exposure</span>
+        <h2>₹2.4L</h2>
+        <p>Total active exposure</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Running Positions</h3>
+          <p>Live open positions copied from master account.</p>
+        </div>
+
+        <div class="filters">
+          <input type="text" placeholder="Search symbol / broker..." />
+          <select>
+            <option>All Brokers</option>
+            <option>Zerodha</option>
+            <option>AliceBlue</option>
+            <option>Zenam</option>
+          </select>
+          <select>
+            <option>All Positions</option>
+            <option>Profit</option>
+            <option>Loss</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="position-list">
+        <div class="position-card" *ngFor="let position of positions">
+          <div class="position-top">
+            <div>
+              <span class="broker">{{ position.broker }}</span>
+              <h4>{{ position.symbol }}</h4>
+              <p>{{ position.account }}</p>
+            </div>
+
+            <span [class]="position.sideClass">{{ position.side }}</span>
+          </div>
+
+          <div class="position-grid">
+            <div>
+              <span>Qty</span>
+              <b>{{ position.qty }}</b>
+            </div>
+
+            <div>
+              <span>Avg Price</span>
+              <b>{{ position.avg }}</b>
+            </div>
+
+            <div>
+              <span>LTP</span>
+              <b>{{ position.ltp }}</b>
+            </div>
+
+            <div>
+              <span>MTM</span>
+              <b [class]="position.pnlClass">{{ position.mtm }}</b>
+            </div>
+
+            <div>
+              <span>Net PNL</span>
+              <b [class]="position.pnlClass">{{ position.pnl }}</b>
+            </div>
+          </div>
+
+          <div class="position-footer">
+            <span>{{ position.status }}</span>
+            <button>View Details</button>
+          </div>
+        </div>
+      </div>
+    </section>

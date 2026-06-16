@@ -1,0 +1,98 @@
+<div class="owner-login-page">
+  <div class="grid-bg"></div>
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
+
+  <section class="owner-left">
+    <div class="brand">
+      <div class="logo">CT</div>
+      <div>
+        <h2>CopyTrade</h2>
+        <p>Owner Control Access</p>
+      </div>
+    </div>
+
+    <div class="owner-hero">
+      <span class="tag">Administrator Login</span>
+
+      <h1>Owner Control for Private Copy Trading Operations.</h1>
+
+      <p>
+        Access the private control area to manage platform activity,
+        monitor trading operations and maintain secure administrative control.
+      </p>
+    </div>
+  </section>
+
+  <section class="owner-right">
+    <div class="owner-card">
+      <div class="card-head">
+        <span class="owner-badge">● Owner Protected</span>
+        <h2>Owner Login</h2>
+        <p>Enter owner credentials to continue.</p>
+      </div>
+
+      <form (submit)="onLogin()">
+        @if (errorMessage) {
+          <div class="error-msg" style="color: #ef4444; font-weight: 700; font-size: 14px; margin-bottom: 18px; border: 1px solid rgba(239, 68, 68, 0.25); background: rgba(239, 68, 68, 0.08); padding: 12px; border-radius: 14px; text-align: center;">
+            {{ errorMessage }}
+          </div>
+        }
+
+        <div class="field">
+          <label>Owner Email / User ID</label>
+          <div class="input-box">
+            <span>👑</span>
+            <input type="text" name="username" [(ngModel)]="username" placeholder="Enter e-mail or user id" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <div class="input-box">
+            <span>🔐</span>
+            <input type="password" name="password" [(ngModel)]="password" placeholder="Enter password" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Owner OTP</label>
+          <div class="otp-row">
+            <div class="input-box">
+              <span>🛡️</span>
+              <input type="text" placeholder="Enter OTP" />
+            </div>
+
+            <a
+              class="otp-btn"
+              href="mailto:shaikhmubin812@gmail.com?subject=CopyTrade Owner OTP Request&body=Hello Owner,%0D%0A%0D%0APlease share the OTP for owner login verification.%0D%0A%0D%0AThank you."
+            >
+              Request OTP
+            </a>
+          </div>
+        </div>
+
+        <div class="owner-options">
+          <label>
+            <input type="checkbox" checked />
+            Remember owner device
+          </label>
+
+          <a
+            href="mailto:shaikhmubin812@gmail.com?subject=CopyTrade Owner Password Recovery&body=Hello,%0D%0A%0D%0AI need help recovering owner login access for the CopyTrade platform.%0D%0ARegistered owner email: shaikhmubin812@gmail.com%0D%0AThank you."
+          >
+            Recover password
+          </a>
+        </div>
+
+        <button type="submit" class="owner-login-btn">
+          Login as Owner
+        </button>
+
+        <button type="button" routerLink="/login" class="back-btn">
+          Back to Admin Login
+        </button>
+      </form>
+    </div>
+  </section>
+</div>

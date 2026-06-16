@@ -1,0 +1,206 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Platform Configuration</span>
+        <h1>Settings</h1>
+        <p>Manage copy trading settings, market timing, retry count, slippage and risk controls.</p>
+      </div>
+
+      <div class="actions">
+        <button class="dark-btn">Reset</button>
+        <button class="primary-btn">Save Settings</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card success">
+        <span>Copy Mode</span>
+        <h2>Auto</h2>
+        <p>Copy trading enabled</p>
+      </div>
+
+      <div class="summary-card">
+        <span>Market Time</span>
+        <h2>09:15</h2>
+        <p>India market open</p>
+      </div>
+
+      <div class="summary-card warning">
+        <span>Retry Count</span>
+        <h2>03</h2>
+        <p>Failed order retry</p>
+      </div>
+
+      <div class="summary-card danger">
+        <span>Slippage</span>
+        <h2>0.5%</h2>
+        <p>Protection enabled</p>
+      </div>
+    </section>
+
+    <section class="settings-grid">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Copy Trading Settings</h3>
+            <p>Control how master orders are copied to child accounts.</p>
+          </div>
+          <span class="badge success-badge">Active</span>
+        </div>
+
+        <div class="field">
+          <label>Copy Trading Mode</label>
+          <select>
+            <option>Auto Copy Enabled</option>
+            <option>Manual Approval Required</option>
+            <option>Paused</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Default Quantity Multiplier</label>
+          <input type="text" value="1x" />
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Copy BUY Orders</h4>
+            <p>Automatically copy BUY orders to selected child accounts.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Copy SELL Orders</h4>
+            <p>Automatically copy SELL orders to selected child accounts.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Copy MODIFY / CANCEL Orders</h4>
+            <p>Copy order modification and cancellation events.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Market Timings</h3>
+            <p>Prevent executions outside valid market hours.</p>
+          </div>
+          <span class="badge info-badge">NSE/BSE</span>
+        </div>
+
+        <div class="field">
+          <label>Market Open Time</label>
+          <input type="time" value="09:15" />
+        </div>
+
+        <div class="field">
+          <label>Market Close Time</label>
+          <input type="time" value="15:30" />
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Market Time Validation</h4>
+            <p>Block order copy before open and after close.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Auto Start On Market Open</h4>
+            <p>Prepare copy engine automatically at market open.</p>
+          </div>
+          <label class="switch"><input type="checkbox" /><span></span></label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Retry & Error Handling</h3>
+            <p>Configure failed order retry and API timeout rules.</p>
+          </div>
+          <span class="badge warning-badge">Auto Retry</span>
+        </div>
+
+        <div class="field">
+          <label>Retry Failed Orders</label>
+          <input type="number" value="3" />
+        </div>
+
+        <div class="field">
+          <label>API Timeout</label>
+          <input type="text" value="10 sec" />
+        </div>
+
+        <div class="field">
+          <label>Retry Delay</label>
+          <input type="text" value="2 sec" />
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Auto Retry Failed Orders</h4>
+            <p>Retry failed child executions automatically.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Auto Reconnect WebSocket</h4>
+            <p>Reconnect broker stream if connection breaks.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Slippage & Risk Settings</h3>
+            <p>Protect child accounts from unsafe execution prices.</p>
+          </div>
+          <span class="badge danger-badge">Protected</span>
+        </div>
+
+        <div class="field">
+          <label>Slippage Protection</label>
+          <input type="text" value="0.5%" />
+        </div>
+
+        <div class="field">
+          <label>Daily Loss Limit</label>
+          <input type="text" value="₹25,000" />
+        </div>
+
+        <div class="field">
+          <label>Max Quantity Per Order</label>
+          <input type="number" value="500" />
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Block High Slippage</h4>
+            <p>Prevent execution if price difference is too high.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Disable Copy After Loss</h4>
+            <p>Pause copy trading if daily loss limit is reached.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+      </div>
+    </section>

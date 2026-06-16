@@ -1,0 +1,113 @@
+<div class="login-page">
+  <div class="bg-grid"></div>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+  <div class="orb orb-three"></div>
+
+  <section class="login-left">
+    <div class="brand-box">
+      <div class="logo">CT</div>
+      <div>
+        <h2>CopyTrade</h2>
+        <p>Private Copy Trading Platform</p>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <span class="tag">Secure Trading Control</span>
+
+      <h1>Manage Master-Child Copy Trading Like a Pro.</h1>
+
+      <p>
+        Connect brokers, select master accounts, map child accounts and monitor
+        copied trades in one premium private dashboard.
+      </p>
+
+      <div class="feature-grid">
+        <div>
+          <b>Real-time</b>
+          <span>Order Monitoring</span>
+        </div>
+
+        <div>
+          <b>3 Brokers</b>
+          <span>Zerodha, AliceBlue, Zenam</span>
+        </div>
+
+        <div>
+          <b>Private</b>
+          <span>Admin-only access</span>
+        </div>
+      </div>
+
+      <div class="floating-card">
+        <span>NIFTY 24500 CE</span>
+        <h3>BUY copied</h3>
+        <p>Master → 8 child accounts</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="login-right">
+    <div class="login-card">
+      <div class="card-head">
+        <span class="secure-badge">● Protected Login</span>
+        <h2>Welcome To CopyTrade</h2>
+        <p>Enter your assigned User ID and Password to continue.</p>
+      </div>
+
+      <form (submit)="onLogin()">
+        @if (errorMessage) {
+          <div class="error-msg" style="color: #ef4444; font-weight: 700; font-size: 14px; margin-bottom: 18px; border: 1px solid rgba(239, 68, 68, 0.25); background: rgba(239, 68, 68, 0.08); padding: 12px; border-radius: 14px; text-align: center;">
+            {{ errorMessage }}
+          </div>
+        }
+
+        <div class="field">
+          <label>Email / User ID</label>
+          <div class="input-box">
+            <span>👤</span>
+            <input type="text" name="username" [(ngModel)]="username" placeholder="Enter email or user id" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <div class="input-box">
+            <span>🔒</span>
+            <input type="password" name="password" [(ngModel)]="password" placeholder="Enter password" required />
+          </div>
+        </div>
+
+        <div class="options">
+          <label>
+            <input type="checkbox" checked />
+            Remember login
+          </label>
+        </div>
+
+        <button type="submit" class="login-btn">
+          Login to Dashboard
+        </button>
+
+        <div class="support-box">
+          <div>
+            <h4>Need login help?</h4>
+            <p>If you forgot your User ID or password, please contact the owner/support team.</p>
+          </div>
+
+          <a
+            class="support-btn"
+            href="mailto:shaikhmubin812@gmail.com?subject=CopyTrade Login Help Required&body=Hello Owner,%0D%0A%0D%0AI am facing a login issue in the CopyTrade platform.%0D%0A%0D%0AIssue:%0D%0A- I forgot my User ID / Password.%0D%0A- I am not able to login.%0D%0A- Please help me recover my login access.%0D%0A%0D%0AThank you."
+          >
+            Contact Support
+          </a>
+        </div>
+
+        <button type="button" routerLink="/owner-login" class="administrator-btn">
+          Login as Administrator
+        </button>
+      </form>
+    </div>
+  </section>
+</div>

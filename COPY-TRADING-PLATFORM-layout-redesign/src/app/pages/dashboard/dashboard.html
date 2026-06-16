@@ -1,0 +1,184 @@
+
+
+<main class="terminal-content">
+  
+  <section class="control-bar">
+    <div class="account-select">
+      <label>Select Account</label>
+      <select>
+        <option>All Accounts</option>
+        <option>768687 : 768687</option>
+        <option>MRX671 : Zerodha</option>
+        <option>ACC002 : AliceBlue</option>
+      </select>
+    </div>
+
+    <div class="control-actions">
+      <button class="icon-btn">⟳</button>
+      <button class="icon-btn">◷</button>
+      <button class="icon-btn">⚙</button>
+      <button class="primary-btn">Start Copy</button>
+    </div>
+  </section>
+
+
+  <!-- Dashboard Cards -->
+  <section class="quick-stats">
+    <div class="stat-card" *ngFor="let item of stats">
+      <span>{{ item.label }}</span>
+      <h3>{{ item.value }}</h3>
+      <p>{{ item.info }}</p>
+    </div>
+  </section>
+
+
+  <!-- Account Summary -->
+  <section class="table-panel">
+
+    <div class="panel-head">
+      <div>
+        <h3>Account Level Summary</h3>
+        <p>Portfolio, margin and order summary across connected accounts.</p>
+      </div>
+
+      <div class="panel-actions">
+        <button>Excel</button>
+        <button>CSV</button>
+        <input type="text" placeholder="Search..." />
+      </div>
+    </div>
+
+
+    <div class="modern-table-wrapper">
+      <table class="modern-table">
+
+        <thead>
+          <tr>
+            <th colspan="2" class="group account">Account</th>
+            <th colspan="6" class="group position">Position [Net]</th>
+            <th colspan="3" class="group margin">Margin</th>
+            <th colspan="4" class="group orders">Orders</th>
+          </tr>
+
+          <tr>
+            <th>Pseudo Acc</th>
+            <th>Trading Acc</th>
+            <th>M2M</th>
+            <th>PNL</th>
+            <th>AT PNL</th>
+            <th>#Total</th>
+            <th>#Open</th>
+            <th>#Closed</th>
+            <th>Total</th>
+            <th>Utilized</th>
+            <th>Available</th>
+            <th>#Total</th>
+            <th>#Open</th>
+            <th>#T-Pend</th>
+            <th>#Complete</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+  <tr *ngFor="let row of accountSummary">
+    <td>{{ row.pseudo }}</td>
+    <td>{{ row.trading }}</td>
+    <td>{{ row.m2m }}</td>
+    <td>{{ row.pnl }}</td>
+    <td>{{ row.atPnl }}</td>
+    <td>{{ row.total }}</td>
+    <td>{{ row.open }}</td>
+    <td>{{ row.closed }}</td>
+    <td>{{ row.marginTotal }}</td>
+    <td>{{ row.utilized }}</td>
+    <td>{{ row.available }}</td>
+    <td>{{ row.orderTotal }}</td>
+    <td>{{ row.orderOpen }}</td>
+    <td>{{ row.pending }}</td>
+    <td>{{ row.complete }}</td>
+  </tr>
+</tbody>
+
+      </table>
+    </div>
+
+  </section>
+
+
+
+  <!-- Symbol Summary -->
+  <section class="table-panel">
+
+    <div class="panel-head">
+      <div>
+        <h3>Symbol Level Summary</h3>
+        <p>Live symbol-wise positions, holdings and execution view.</p>
+      </div>
+
+      <div class="panel-actions">
+        <button>Excel</button>
+        <button>CSV</button>
+        <input type="text" placeholder="Search symbol..." />
+      </div>
+    </div>
+
+
+    <div class="modern-table-wrapper">
+      <table class="modern-table">
+
+        <thead>
+
+          <tr>
+            <th colspan="8" class="group position">
+              Position [Net]
+            </th>
+            <th colspan="5" class="group holdings">
+              Holdings
+            </th>
+          </tr>
+
+          <tr>
+            <th>Symbol</th>
+            <th>Buy Qty</th>
+            <th>Sell Qty</th>
+            <th>Net Qty</th>
+            <th>M2M</th>
+            <th>PNL</th>
+            <th>Buy Avg</th>
+            <th>Sell Avg</th>
+            <th>Holding Qty</th>
+            <th>Current Value</th>
+            <th>Total Qty</th>
+            <th>Status</th>
+            <th>Broker</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+  <tr *ngFor="let item of symbolSummary">
+    <td>{{ item.symbol }}</td>
+    <td>{{ item.buyQty }}</td>
+    <td>{{ item.sellQty }}</td>
+    <td>{{ item.netQty }}</td>
+    <td>{{ item.m2m }}</td>
+    <td>{{ item.pnl }}</td>
+    <td>{{ item.buyAvg }}</td>
+    <td>{{ item.sellAvg }}</td>
+    <td>{{ item.holdingQty }}</td>
+    <td>{{ item.value }}</td>
+    <td>{{ item.totalQty }}</td>
+    <td>{{ item.status }}</td>
+    <td>{{ item.broker }}</td>
+  </tr>
+</tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+</main>

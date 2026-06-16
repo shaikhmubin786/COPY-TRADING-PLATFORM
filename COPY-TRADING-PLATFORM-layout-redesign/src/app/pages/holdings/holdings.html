@@ -1,0 +1,109 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Portfolio Holdings</span>
+        <h1>Holdings</h1>
+        <p>Track quantity, current value, invested amount and profit/loss.</p>
+      </div>
+
+      <div class="actions">
+        <button class="dark-btn">Export CSV</button>
+        <button class="light-btn">Export Excel</button>
+        <button class="primary-btn">Refresh Holdings</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card">
+        <span>Total Holdings</span>
+        <h2>18</h2>
+        <p>Across all brokers</p>
+      </div>
+
+      <div class="summary-card success">
+        <span>Current Value</span>
+        <h2>₹8.7L</h2>
+        <p>Live portfolio value</p>
+      </div>
+
+      <div class="summary-card warning">
+        <span>Invested</span>
+        <h2>₹7.9L</h2>
+        <p>Total buy value</p>
+      </div>
+
+      <div class="summary-card success">
+        <span>Total P/L</span>
+        <h2>+₹82K</h2>
+        <p>Overall gain</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Holdings List</h3>
+          <p>Broker-wise holdings with quantity and profit/loss.</p>
+        </div>
+
+        <div class="filters">
+          <input type="text" placeholder="Search stock / broker..." />
+          <select>
+            <option>All Brokers</option>
+            <option>Zerodha</option>
+            <option>AliceBlue</option>
+            <option>Zenam</option>
+          </select>
+          <select>
+            <option>All P/L</option>
+            <option>Profit</option>
+            <option>Loss</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="holding-list">
+        <div class="holding-card" *ngFor="let item of holdings">
+          <div class="holding-top">
+            <div>
+              <span class="broker">{{ item.broker }}</span>
+              <h4>{{ item.symbol }}</h4>
+              <p>{{ item.account }}</p>
+            </div>
+
+            <span [class]="item.pnlClass">{{ item.pnl }}</span>
+          </div>
+
+          <div class="holding-grid">
+            <div>
+              <span>Quantity</span>
+              <b>{{ item.qty }}</b>
+            </div>
+
+            <div>
+              <span>Avg Price</span>
+              <b>{{ item.avg }}</b>
+            </div>
+
+            <div>
+              <span>LTP</span>
+              <b>{{ item.ltp }}</b>
+            </div>
+
+            <div>
+              <span>Invested</span>
+              <b>{{ item.invested }}</b>
+            </div>
+
+            <div>
+              <span>Current Value</span>
+              <b>{{ item.value }}</b>
+            </div>
+          </div>
+
+          <div class="holding-footer">
+            <span>{{ item.status }}</span>
+            <button>View Details</button>
+          </div>
+        </div>
+      </div>
+    </section>

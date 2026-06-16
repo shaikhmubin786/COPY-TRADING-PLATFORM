@@ -1,0 +1,25 @@
+<header class="topbar">
+      <div><span class="tag">Execution Monitoring</span><h1>Logs</h1><p>Trade logs, copy logs, retry logs, error logs and broker API responses.</p></div>
+      <div class="actions"><button class="dark-btn">Export CSV</button><button class="primary-btn">Live Stream On</button></div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card"><span>Success Logs</span><h2>128</h2><p>Copied successfully today</p></div>
+      <div class="summary-card warning"><span>Retry Logs</span><h2>09</h2><p>Auto retry recovered</p></div>
+      <div class="summary-card danger"><span>Error Logs</span><h2>04</h2><p>Needs operator review</p></div>
+      <div class="summary-card"><span>API Responses</span><h2>312</h2><p>Broker callbacks received</p></div>
+    </section>
+
+    <section class="table-panel">
+      <div class="panel-head">
+        <div><h3>Live Execution Logs</h3><p>Every important trade, retry and broker API event in one place.</p></div>
+        <div class="filters"><input type="text" placeholder="Search logs..."><select><option>All Logs</option><option>Success</option><option>Retry</option><option>Error</option></select></div>
+      </div>
+      <div class="log-list">
+        <div class="log-card" *ngFor="let log of logs">
+          <div><span [class]="log.dotClass"></span><b>{{ log.time }}</b></div>
+          <div><h3>{{ log.title }}</h3><p>{{ log.message }}</p><small>{{ log.broker }} · {{ log.account }} · {{ log.symbol }} · {{ log.category }}</small></div>
+          <strong [class]="log.typeClass">{{ log.type }}</strong>
+        </div>
+      </div>
+    </section>

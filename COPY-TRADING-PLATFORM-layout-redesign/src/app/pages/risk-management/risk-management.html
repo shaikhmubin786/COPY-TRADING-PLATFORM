@@ -1,0 +1,110 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Protection Layer</span>
+        <h1>Risk Management</h1>
+        <p>Control max quantity, daily loss limit, slippage and auto-stop rules.</p>
+      </div>
+
+      <div class="actions">
+        <button class="dark-btn">Reset Risk</button>
+        <button class="primary-btn">Save Rules</button>
+      </div>
+    </header>
+
+    <section class="risk-grid">
+      <div class="risk-card danger">
+        <span>Daily Loss Limit</span>
+        <h2>₹25,000</h2>
+        <p>Copy trading stops after this limit.</p>
+      </div>
+
+      <div class="risk-card">
+        <span>Max Quantity</span>
+        <h2>500</h2>
+        <p>Maximum quantity per order.</p>
+      </div>
+
+      <div class="risk-card warning">
+        <span>Slippage Limit</span>
+        <h2>0.5%</h2>
+        <p>Blocks high price difference trades.</p>
+      </div>
+
+      <div class="risk-card success">
+        <span>Auto Stop</span>
+        <h2>Enabled</h2>
+        <p>Risk guard is active.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Risk Rules</h3>
+          <p>Configure safety rules before enabling live copy trading.</p>
+        </div>
+        <span class="safe-badge">● Risk Guard Active</span>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Daily Loss Limit</label>
+          <input type="text" value="₹25,000" />
+        </div>
+
+        <div class="field">
+          <label>Max Quantity Per Order</label>
+          <input type="number" value="500" />
+        </div>
+
+        <div class="field">
+          <label>Max Open Orders</label>
+          <input type="number" value="20" />
+        </div>
+
+        <div class="field">
+          <label>Slippage Protection</label>
+          <input type="text" value="0.5%" />
+        </div>
+
+        <div class="field">
+          <label>Max Loss Per Trade</label>
+          <input type="text" value="₹5,000" />
+        </div>
+
+        <div class="field">
+          <label>Risk Mode</label>
+          <select>
+            <option>Strict</option>
+            <option>Balanced</option>
+            <option>Relaxed</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="toggle-list">
+        <div class="toggle-row">
+          <div>
+            <h4>Disable copy after daily loss</h4>
+            <p>Automatically pause child order execution after loss limit.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Block orders outside market hours</h4>
+            <p>Validate market timing before copying orders.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <h4>Block high slippage trades</h4>
+            <p>Prevent child execution if price difference is unsafe.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked /><span></span></label>
+        </div>
+      </div>
+    </section>

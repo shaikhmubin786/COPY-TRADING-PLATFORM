@@ -1,0 +1,197 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Copy Trading Engine</span>
+        <h1>Master-Child Mapping</h1>
+        <p>Select master account, map child accounts, control multiplier and copy status.</p>
+      </div>
+
+      <div class="actions">
+        <button class="danger-btn">Pause Copy</button>
+        <button class="dark-btn">Disconnect Childs</button>
+        <button class="primary-btn">Start Copy Trading</button>
+      </div>
+    </header>
+
+    <section class="status-grid">
+      <div class="status-card success">
+        <span>Copy Engine</span>
+        <h2>Running</h2>
+        <p>Live order listener active</p>
+      </div>
+
+      <div class="status-card">
+        <span>Master Account</span>
+        <h2>01</h2>
+        <p>Zerodha ACC001</p>
+      </div>
+
+      <div class="status-card success">
+        <span>Active Childs</span>
+        <h2>02</h2>
+        <p>Copy enabled</p>
+      </div>
+
+      <div class="status-card warning">
+        <span>Paused Childs</span>
+        <h2>01</h2>
+        <p>Manual pause active</p>
+      </div>
+    </section>
+
+    <section class="mapping-grid">
+      <div class="panel master-panel">
+        <div class="panel-head">
+          <div>
+            <h3>Master Account</h3>
+            <p>Only one master can be active at a time.</p>
+          </div>
+          <span class="live">● Listening</span>
+        </div>
+
+        <div class="master-card">
+          <div class="master-logo">Z</div>
+          <div>
+            <span>ACTIVE MASTER</span>
+            <h2>Zerodha - ACC001</h2>
+            <p>Order listener active for BUY / SELL / MODIFY / CANCEL.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Change Master Account</label>
+          <select>
+            <option>Zerodha - ACC001</option>
+            <option>AliceBlue - ACC002</option>
+            <option>Zenam - ACC003</option>
+          </select>
+        </div>
+
+        <div class="master-actions">
+          <button class="primary-btn">Validate Master</button>
+          <button class="dark-btn">Refresh Session</button>
+        </div>
+      </div>
+
+      <div class="panel engine-panel">
+        <div class="panel-head">
+          <div>
+            <h3>Engine Workflow</h3>
+            <p>Master order to child execution pipeline.</p>
+          </div>
+          <span class="badge">WebSocket Active</span>
+        </div>
+
+        <div class="flow">
+          <div>Master Order</div>
+          <span>→</span>
+          <div>Order Listener</div>
+          <span>→</span>
+          <div>Copy Engine</div>
+          <span>→</span>
+          <div>Child Accounts</div>
+        </div>
+
+        <div class="engine-info">
+          <div>
+            <span>Last Sync</span>
+            <b>2 sec ago</b>
+          </div>
+          <div>
+            <span>Execution</span>
+            <b>Instant</b>
+          </div>
+          <div>
+            <span>Retry</span>
+            <b>Enabled</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel child-panel">
+      <div class="panel-head">
+        <div>
+          <h3>Child Account Mapping</h3>
+          <p>Enable/disable copy and control custom lot multiplier.</p>
+        </div>
+
+        <button class="dark-btn">+ Add Child Account</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Child Account</th>
+              <th>Broker</th>
+              <th>Multiplier</th>
+              <th>Copy Toggle</th>
+              <th>Status</th>
+              <th>Last Sync</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let child of children">
+              <td>
+                <div class="account-cell">
+                  <div class="account-icon">{{ child.short }}</div>
+                  <div>
+                    <b>{{ child.account }}</b>
+                    <p>{{ child.clientId }}</p>
+                  </div>
+                </div>
+              </td>
+
+              <td>{{ child.broker }}</td>
+
+              <td>
+                <input class="multiplier" type="text" [value]="child.multiplier" />
+              </td>
+
+              <td>
+                <label class="switch">
+                  <input type="checkbox" [checked]="child.copyEnabled" />
+                  <span></span>
+                </label>
+              </td>
+
+              <td>
+                <span [class]="child.statusClass">{{ child.status }}</span>
+              </td>
+
+              <td>{{ child.sync }}</td>
+
+              <td>
+                <div class="row-actions">
+                  <button class="mini green">Enable</button>
+                  <button class="mini orange">Disable</button>
+                  <button class="mini red">Remove</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="settings-grid">
+      <div class="panel setting-card">
+        <h3>Risk Control</h3>
+        <p>Stop copy automatically if daily loss exceeds limit.</p>
+        <div class="risk-value">₹25,000</div>
+      </div>
+
+      <div class="panel setting-card">
+        <h3>Slippage Protection</h3>
+        <p>Prevent order execution if price difference is high.</p>
+        <div class="risk-value">0.5%</div>
+      </div>
+
+      <div class="panel setting-card">
+        <h3>Auto Retry</h3>
+        <p>Retry failed child orders automatically.</p>
+        <div class="risk-value">3 Times</div>
+      </div>
+    </section>

@@ -1,0 +1,460 @@
+<header class="topbar">
+
+  <div>
+    <span class="tag">Broker Account Management</span>
+    <h1>Accounts</h1>
+    <p>Add, validate, connect and manage broker accounts.</p>
+  </div>
+
+  <div class="actions">
+
+    <button class="dark-btn"
+      (click)="refreshAccounts()">
+      Refresh
+    </button>
+
+
+    <button class="primary-btn"
+      (click)="openAddAccount()">
+
+      {{ showAddForm ? 'Close Form' : '+ Add Account' }}
+
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- Summary Cards -->
+
+<section class="summary-grid">
+
+
+  <div class="summary-card">
+
+    <span>Total Accounts</span>
+
+    <h2>{{ totalAccounts }}</h2>
+
+    <p>All brokers combined</p>
+
+  </div>
+
+
+  <div class="summary-card success">
+
+    <span>Connected</span>
+
+    <h2>{{ connectedCount }}</h2>
+
+    <p>Live API sessions</p>
+
+  </div>
+
+
+  <div class="summary-card warning">
+
+    <span>Warning</span>
+
+    <h2>{{ warningCount }}</h2>
+
+    <p>Need attention</p>
+
+  </div>
+
+
+  <div class="summary-card danger">
+
+    <span>Disconnected</span>
+
+    <h2>{{ disconnectedCount }}</h2>
+
+    <p>Reconnect required</p>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- Add / Edit Form -->
+
+
+<section class="form-panel"
+  *ngIf="showAddForm">
+
+
+  <div class="panel-head">
+
+    <div>
+
+      <h3>
+
+        {{ editMode
+          ? 'Update Broker Account'
+          : 'Add Broker Account'
+        }}
+
+      </h3>
+
+      <p>
+        Enter broker credentials.
+      </p>
+
+    </div>
+
+
+    <span class="secure">
+      ● Secure Credentials
+    </span>
+
+
+  </div>
+
+
+
+  <div class="form-grid">
+
+
+    <div class="field">
+
+      <label>Broker</label>
+
+      <select
+        [(ngModel)]="newAccount.broker">
+
+        <option>Zerodha</option>
+
+        <option>AliceBlue</option>
+
+        <option>Zenam</option>
+
+      </select>
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label>Client ID</label>
+
+      <input
+        type="text"
+        [(ngModel)]="newAccount.client_id"
+        placeholder="ACC001">
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label>Account Name</label>
+
+      <input
+        type="text"
+        [(ngModel)]="newAccount.name"
+        placeholder="Main Account">
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label>Role</label>
+
+      <select
+        [(ngModel)]="newAccount.role">
+
+        <option>
+          Master
+        </option>
+
+        <option>
+          Child
+        </option>
+
+      </select>
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label>API Key</label>
+
+      <input
+        type="password"
+        [(ngModel)]="newAccount.api_key"
+        placeholder="Enter API Key">
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label>API Secret</label>
+
+      <input
+        type="password"
+        [(ngModel)]="newAccount.api_secret"
+        placeholder="Enter API Secret">
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label>Access Token</label>
+
+      <input
+        type="password"
+        [(ngModel)]="newAccount.access_token"
+        placeholder="Access Token">
+
+    </div>
+
+
+  </div>
+
+
+  <div class="form-actions">
+
+
+    <button
+      class="primary-btn"
+      (click)="editMode ? updateAccount() : saveAccount()">
+
+
+      {{ editMode
+          ? 'Update Account'
+          : 'Save Account'
+      }}
+
+
+    </button>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- Account List -->
+
+
+<section class="table-panel">
+
+
+  <div class="panel-head">
+
+
+    <div>
+
+      <h3>
+        Broker Accounts List
+      </h3>
+
+
+      <p>
+        Manage all broker connections.
+      </p>
+
+
+    </div>
+
+
+
+    <div class="filters">
+
+
+      <input
+        type="text"
+        placeholder="Search broker/client ID"
+        [(ngModel)]="searchText"
+        (input)="searchAccounts()">
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="account-list">
+
+
+    <div
+      class="account-card"
+      *ngFor="let acc of filteredAccounts">
+
+
+      <div class="account-main">
+
+
+        <div class="broker-cell">
+
+
+          <div class="broker-icon">
+
+            {{ acc.short }}
+
+          </div>
+
+
+          <div>
+
+
+            <span>
+
+              {{ acc.broker }}
+
+            </span>
+
+
+            <h4>
+
+              {{ acc.name }}
+
+            </h4>
+
+
+            <p>
+
+              {{ acc.clientId }}
+
+            </p>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <span [class]="acc.statusClass">
+
+          {{ acc.status }}
+
+        </span>
+
+
+      </div>
+
+
+
+
+      <div class="account-details">
+
+
+        <div>
+
+          <span>Role</span>
+
+          <b [class]="acc.roleClass">
+
+            {{ acc.role }}
+
+          </b>
+
+
+        </div>
+
+
+        <div>
+
+
+          <span>Connection</span>
+
+          <b>
+
+            {{ acc.connection }}
+
+          </b>
+
+
+        </div>
+
+
+        <div>
+
+
+          <span>Session</span>
+
+
+          <b>
+
+            {{ acc.session }}
+
+          </b>
+
+
+        </div>
+
+
+
+        <div>
+
+
+          <span>Last Sync</span>
+
+
+          <b>
+
+            {{ acc.sync }}
+
+          </b>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="row-actions">
+
+
+        <button
+          class="mini blue"
+          (click)="editAccount(acc)">
+
+          Edit
+
+        </button>
+
+
+
+        <button
+          class="mini red"
+          (click)="deleteAccount(acc.id)">
+
+          Delete
+
+        </button>
+
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+
+</section>

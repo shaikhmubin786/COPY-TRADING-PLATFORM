@@ -1,0 +1,72 @@
+<header class="topbar">
+      <div>
+        <span class="tag">Real-Time Order Monitoring</span>
+        <h1>Orders</h1>
+        <p>Track master orders and copied child executions live.</p>
+      </div>
+
+      <div class="actions">
+        <button class="dark-btn">Export CSV</button>
+        <button class="light-btn">Export Excel</button>
+        <button class="primary-btn">Refresh Orders</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card"><span>Open Orders</span><h2>15</h2><p>Currently running</p></div>
+      <div class="summary-card success"><span>Completed</span><h2>48</h2><p>Copied successfully</p></div>
+      <div class="summary-card warning"><span>Pending</span><h2>06</h2><p>Waiting response</p></div>
+      <div class="summary-card danger"><span>Rejected</span><h2>03</h2><p>Need retry check</p></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Live Orders</h3>
+          <p>BUY, SELL, MODIFY and CANCEL order activities.</p>
+        </div>
+
+        <div class="filters">
+          <input type="text" placeholder="Search symbol or broker..." />
+          <select>
+            <option>All Actions</option>
+            <option>BUY</option>
+            <option>SELL</option>
+            <option>MODIFY</option>
+            <option>CANCEL</option>
+          </select>
+          <select>
+            <option>All Status</option>
+            <option>Completed</option>
+            <option>Pending</option>
+            <option>Rejected</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="orders-list">
+        <div class="order-card" *ngFor="let order of orders">
+          <div class="order-main">
+            <div>
+              <span class="time">{{ order.time }}</span>
+              <h4>{{ order.symbol }}</h4>
+              <p>{{ order.master }} → {{ order.child }}</p>
+            </div>
+
+            <span [class]="order.actionClass">{{ order.action }}</span>
+          </div>
+
+          <div class="order-details">
+            <div><span>Qty</span><b>{{ order.qty }}</b></div>
+            <div><span>Price</span><b>{{ order.price }}</b></div>
+            <div><span>Multiplier</span><b>{{ order.multiplier }}</b></div>
+            <div><span>Status</span><b [class]="order.statusClass">{{ order.status }}</b></div>
+          </div>
+
+          <div class="message">
+            <span>{{ order.message }}</span>
+            <button class="view-btn">View Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
